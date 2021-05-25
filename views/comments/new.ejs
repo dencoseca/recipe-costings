@@ -1,0 +1,21 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h1 class="text-center mb-4">Add a comment</h1>
+
+        <form action="/recipes/<%= recipe._id %>/comments" method="POST">
+            <div class="form-group">
+                <textarea class="form-control" name="comment[content]" id="commentContent" cols="30" rows="10"></textarea>
+            </div>
+            <button class="btn btn-outline-primary btn-block mt-4 mb-3" type="submit">Submit</button>
+            <a href="/recipes/<%= recipe._id %>">Go Back</a>
+        </form>
+    </div>
+</div>
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

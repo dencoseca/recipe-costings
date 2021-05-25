@@ -1,0 +1,66 @@
+<!-- -------------------------- -->
+<%- include("./partials/header") %>
+<!-- -------------------------- -->
+
+<header class="jumbotron text-center">
+    <h1 class="display-3 mb-4">Welcome to Recipe Costings</h1>
+    <p class="lead">An essential tool to get your creativity flowing. Keep a record of your suppliers and their products
+        and let Recipe Costings do the rest!
+        <% if (!currentUser) { %>
+        Just create an account or login to begin using the app.
+        <% } %>
+    </p>
+    <% if (!currentUser) { %>
+    <a href="/login" class="btn btn-lg btn-primary mt-4">Login</a>
+    <a href="/register" class="btn btn-lg btn-outline-primary mt-4">Sign Up</a>
+    <% } %>
+</header>
+<div class="row">
+    <div class="col-lg-4 mt-5 mt-lg-0">
+        <div class="card text-center h-100">
+            <img src="https://images.unsplash.com/photo-1537721664796-76f77222a5d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">First Things First</h3>
+                <p class="card-text">Add a supplier to the database. This will give you a list of all your suppliers
+                    when you add a product for the first time.</p>
+            </div>
+            <div class="card-footer bg-white">
+                <a href="/suppliers" class="btn btn-outline-primary btn-lg">Suppliers</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mt-5 mt-lg-0">
+        <div class="card text-center h-100">
+            <img src="https://images.unsplash.com/photo-1474440692490-2e83ae13ba29?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Next Up</h3>
+                <p class="card-text">Once you have added a supplier, head on over to add all the products from that
+                    supplier.</p>
+            </div>
+            <div class="card-footer bg-white">
+                <a href="/products" class="btn btn-outline-primary btn-lg">Products</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 mt-5 mt-lg-0">
+        <div class="card text-center h-100">
+            <img src="https://images.unsplash.com/photo-1512003867696-6d5ce6835040?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Finally!</h3>
+                <p class="card-text">And now for the fun part! Bring out all your recipe ideas. Product costing and
+                    portion costing are all handled for you. While logged in, you can leave a comment on others'
+                    recipes to share those moments of inspiration.</p>
+            </div>
+            <div class="card-footer bg-white">
+                <a href="/recipes" class="btn btn-outline-primary btn-lg">Recipes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- -------------------------- -->
+<%- include("./partials/footer") %>
+<!-- -------------------------- -->

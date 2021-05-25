@@ -1,0 +1,53 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<div class="row">
+    <div class="col-md-9 mx-auto">
+        <div class="card w-100">
+            <img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
+            <div class="card-body">
+                <div class="d-inline float-right">
+                    <% if (currentUser) { %>
+                    <a href="/products/<%= product._id %>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <% } %>
+                    <% if (currentUser && currentUser.isAdmin) { %>
+                    <form class="d-inline" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                    </form>
+                    <% } %>
+                </div>
+                <h2 class="card-title"><%= product.name %></h2>
+            </div>
+            <div class="card-footer">
+                <table class="table table-borderless table-hover">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Pack Weight</th>
+                            <td><%= product.packWeight %>g</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price</th>
+                            <td>£<%= product.price.toFixed(2) %></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Price Per Kilo</th>
+                            <td>£<%= product.pricePerKilo().toFixed(2) %></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Supplier</th>
+                            <td><a href="/suppliers/<%= product.supplier[0]._id %>"><%= product.supplier[0].name %></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

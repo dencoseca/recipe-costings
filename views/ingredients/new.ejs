@@ -1,0 +1,31 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h1 class="text-center mb-4">Add an ingredient to <%= recipe.name %></h1>
+
+        <form action="/recipes/<%= recipe._id %>/ingredients" method="POST">
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Example select</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="ingredient[product]">
+                    <% products.forEach(product => { %>
+                    <option value="<%= product._id %>"><%= product.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ingredientQuantity">Quantity (grams)</label>
+                <input class="form-control" id="ingredientQuantity" type="text" name="ingredient[quantity]">
+            </div>
+            <button class="btn btn-outline-primary btn-block mt-4 mb-3" type="submit">Submit</button>
+            <a href="/recipes/<%= recipe._id %>">Return to recipe</a>
+        </form>
+        <a class="btn btn-outline-primary btn-lg mt-5" href="/products/new">Create a new product</a>
+    </div>
+</div>
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

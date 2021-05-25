@@ -1,0 +1,31 @@
+<!-- -------------------------- -->
+<%- include("../partials/header") %>
+<!-- -------------------------- -->
+
+<header class="jumbotron text-center">
+    <h1 class="display-3">Recipes</h1>
+    <p class="lead">Cost recipes for your business! A place for your staff to create and collaborate.</p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/recipes/new">Create a new recipe</a>
+    </p>
+</header>
+
+    <div class="card-columns text-center">
+        <% recipes.forEach(recipe => { %>
+        <div class="card mb-3">
+            <img src="<%= recipe.image %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= recipe.name %></h5>
+                <p class="card-text"><%= recipe.description %></p>
+                <a href="/recipes/<%= recipe._id %>" class="btn btn-outline-primary">See Recipe</a>
+            </div>
+            <div class="card-footer text-muted">
+                <em>Created by <%= recipe.author.username %></em>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+<!-- -------------------------- -->
+<%- include("../partials/footer") %>
+<!-- -------------------------- -->

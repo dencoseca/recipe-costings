@@ -1,0 +1,40 @@
+<!-- -------------------------- -->
+<%- include("../partials/header") %>
+<!-- -------------------------- -->
+
+<header class="jumbotron text-center">
+    <h1 class="display-3">Products</h1>
+    <p class="lead">Add products from your suppliers to build an ingredients list.</p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/products/new">Create a new product</a>
+    </p>
+</header>
+
+<div class="row text-center">
+    <div class="col">
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Pack Weight (g)</th>
+                    <th scope="col">Price (£)</th>
+                    <th class="d-none d-lg-table-cell" scope="col">Price Per Kilo (£)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach( product => { %>
+                <tr>
+                    <td><a href="/products/<%= product._id%>"><%= product.name %></a></td>
+                    <td><%= product.packWeight %></td>
+                    <td><%= product.price.toFixed(2) %></td>
+                    <td class="d-none d-lg-table-cell"><%= product.pricePerKilo().toFixed(2) %></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------- -->
+<%- include("../partials/footer") %>
+<!-- -------------------------- -->

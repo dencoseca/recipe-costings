@@ -1,0 +1,19 @@
+<!-- -------------------------- -->
+<%- include("./partials/header") %>
+<!-- -------------------------- -->
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <h1>Sign Up!</h1>
+        <form class="form" action="/register" method="POST">
+                <input class="form-control mt-3" id="userName" type="text" name="username" placeholder="username">
+                <input class="form-control mt-3" id="userPassword" type="password" name="password" placeholder="password">
+                <input class="form-control mt-3" id="adminCode" type="password" name="adminCode" placeholder="admin code">
+            <button class="btn btn-primary btn-block mt-4" type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- -------------------------- -->
+<%- include("./partials/footer") %>
+<!-- -------------------------- -->

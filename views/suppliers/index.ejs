@@ -1,0 +1,38 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<header class="jumbotron text-center">
+    <h1 class="display-3">Suppliers</h1>
+    <p class="lead">Keep a record of your suppliers so you can add their products to the database.</p>
+    <p>
+        <a class="btn btn-primary btn-lg" href="/suppliers/new">Create a new supplier</a>
+    </p>
+</header>
+
+<table class="table table-borderless table-hover text-center">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th class="d-none d-lg-table-cell" scope="col">City</th>
+            <th class="d-none d-lg-table-cell" scope="col">Contact</th>
+            <th scope="col">Phone Number</th>
+            <th class="d-none d-lg-table-cell" scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% suppliers.forEach(supplier => { %>
+        <tr>
+            <td><a href="/suppliers/<%= supplier._id %>"><%= supplier.name %></a></td>
+            <td class="d-none d-lg-table-cell"><%= supplier.addressCity %></td>
+            <td class="d-none d-lg-table-cell"><%= supplier.contactName %></td>
+            <td><%= supplier.contactNum %></td>
+            <td class="d-none d-lg-table-cell"><%= supplier.contactEmail %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

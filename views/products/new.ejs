@@ -1,0 +1,50 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h1 class="text-center mb-4">Create a new product</h1>
+
+        <form action="/products" method="POST">
+            <div class="form-group">
+                <label for="productName">Name</label>
+                <input class="form-control" id="productName" type="text" name="product[name]">
+            </div>
+            <div class="form-group">
+                <label for="productImage">Image URL</label>
+                <input class="form-control" id="productImage" type="text" name="product[image]">
+            </div>
+            <div class="form-group">
+                <label for="productPackWeight">Pack Weight (grams)</label>
+                <input class="form-control" id="productPackWeight" type="text" name="product[packWeight]">
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">£</span>
+                    </div>
+                    <input class="form-control" id="productPrice" type="number" name="product[price]" min="0"
+                        step="0.01">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productSupplier">Supplier</label>
+                <select class="form-control" id="productSupplier" name="product[supplier]">
+                    <% suppliers.forEach(supplier => { %>
+                    <option value="<%= supplier._id %>"><%= supplier.name %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <button class="btn btn-outline-primary btn-block mt-4 mb-3" type="submit">Submit</button>
+            <a href="/products">Go Back</a>
+        </form>
+        <a class="btn btn-outline-primary btn-lg mt-5" href="/suppliers/new">Create a new supplier</a>
+    </div>
+</div>
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

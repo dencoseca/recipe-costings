@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+#main_container {
+  min-height: 100%;
+}
+
+footer {
+  position: relative;
+  height: 70px;
+  margin-top: -70px;
+  clear: both;
+}

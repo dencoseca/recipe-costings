@@ -1,0 +1,121 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<div class="row">
+
+    <div class="col-lg-7">
+        <div class="card w-100">
+            <img class="card-img-top" src="<%= recipe.image %>" alt="Card image cap">
+            <div class="card-body">
+                <h2 class="card-title"><%= recipe.name %></h2>
+                <p class="card-text"><%= recipe.description %></p>
+                <% if (currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                <div class="d-inline float-right">
+                    <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <form class="d-inline" action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+                <p class="text-muted"><em>Created by <%= recipe.author.username %></em></p>
+                <hr>
+                <div class="row">
+                    <div class="col col-md-8 mx-auto">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Portions</th>
+                                    <td class="text-right"><%= recipe.totalPortions %></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Cost Per Portion</th>
+                                    <td class="text-right">£<%= (recipeTotalCost/recipe.totalPortions).toFixed(2) %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Total Cost</th>
+                                    <td class="text-right">£<%= recipeTotalCost.toFixed(2) %></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <table class="table table-borderless table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Ingredient</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Cost For Recipe</th>
+                            <% if (currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                            <th scope="col">Manage</th>
+                            <% } %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% recipe.ingredients.forEach( ingredient => { %>
+                        <tr>
+                            <td>
+                                <a href=" /products/<%= ingredient.product[0]._id %>">
+                                    <%= ingredient.product[0].name %></a>
+                            </td>
+                            <td><%= ingredient.quantity %>g</td>
+                            <td>£<%= ingredient.costForRecipe().toFixed(2) %></td>
+                            <% if (currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                            <td><a class="btn btn-outline-secondary btn-sm"
+                                    href="/recipes/<%= recipe.id %>/ingredients/<%= ingredient._id %>/edit">Edit</a>
+                                <form class="d-inline"
+                                    action="/recipes/<%= recipe.id %>/ingredients/<%= ingredient.id %>?_method=DELETE"
+                                    method="POST">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                            <% } %>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% if (currentUser && recipe.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                <a class="btn btn-primary" href="/recipes/<%= recipe._id %>/ingredients/new">Add New Ingredient</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 mt-3 mt-lg-0">
+        <div class="card">
+            <div class="card-body bg-light">
+                <div>
+                    <h5 class="d-inline">Leave a comment</h5>
+                    <a class="btn btn-primary btn-sm float-right" href="/recipes/<%= recipe._id %>/comments/new">Add
+                        Comment</a>
+                </div>
+                <hr>
+                <% recipeWithComments.comments.forEach(comment => { %>
+                <div class="row">
+                    <div class="col">
+                        <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                        <form class="d-inline float-right"
+                            action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE"
+                            method="post">
+                            <button class="btn btn-outline-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                        <a href="/recipes/<%= recipe._id %>/comments/<%= comment._id %>/edit"
+                            class="btn btn-outline-secondary btn-sm float-right mr-2 ml-4">Edit</a>
+                        <% } %>
+
+                        <strong><%= comment.author.username %></strong>
+                        <p><%= comment.content %></p>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

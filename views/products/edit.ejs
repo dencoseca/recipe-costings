@@ -1,0 +1,58 @@
+<!-- --------------------------- -->
+<%- include("../partials/header") %>
+<!-- --------------------------- -->
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <h1 class="text-center mb-4">Edit <%= product.name %></h1>
+
+        <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+            <div class="form-group">
+                <label for="productName">Name</label>
+                <input class="form-control" id="productName" type="text" name="product[name]"
+                    value="<%= product.name %>">
+            </div>
+            <div class="form-group">
+                <label for="productImage">Image URL</label>
+                <input class="form-control" id="productImage" type="text" name="product[image]"
+                    value="<%= product.image %>">
+            </div>
+            <div class="form-group">
+                <label for="productPackWeight">Pack Weight (grams)</label>
+                <input class="form-control" id="productPackWeight" type="text" name="product[packWeight]"
+                    value="<%= product.packWeight %>">
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">£</span>
+                    </div>
+                    <input class="form-control" id="productPrice" type="number" name="product[price]" min="0"
+                        step="0.01" value="<%= product.price.toFixed(2) %>">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="productSupplier">Supplier</label>
+                <select class="form-control" id="productSupplier" name="product[supplier]">
+                    <% suppliers.forEach(supplier => { %>
+                    <% if (supplier._id.equals(product.supplier[0]._id)){ %>
+                    <option value="<%= supplier._id %>" selected><%= supplier.name %></option>
+                    <% } else { %>
+                    <option value="<%= supplier._id %>"><%= supplier.name %></option>
+                    <% } %>
+                    <% }) %>
+                </select>
+            </div>
+
+            <button class="btn btn-outline-primary btn-block mt-4 mb-3" type="submit">Submit</button>
+            <a href="/products">Back to Products</a>
+        </form>
+        <a class="btn btn-outline-primary btn-lg mt-5" href="/suppliers/new">Create a new supplier</a>
+    </div>
+</div>
+
+
+<!-- --------------------------- -->
+<%- include("../partials/footer") %>
+<!-- --------------------------- -->

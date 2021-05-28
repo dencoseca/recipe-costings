@@ -19,9 +19,9 @@ Complete.
 
 ## Reflection
 
-My goal with this project was to learn how to use JavaScript on the back-end. It was a great gateway into learning the MERN stack in small steps. It was interesting using EJS to serve the HTML from the app hosted on Heroku, without the need for a front-end. This meant that it was a very pure way to learn RESTful routing techniques, with all the logic handled with Express.
+My goal with this project was to learn how to use JavaScript on the backend. It was a great gateway into learning the MERN stack in small steps. It was interesting using EJS to serve the HTML from the app hosted on Heroku, without the need for a frontend. This meant that it was a very pure way to learn RESTful routing techniques, with all the logic handled with Express.
 
-This was also my first foray into communicating with a database and handling user accounts. It was really interesting dealing with security for user logins and data validation for the RESTful API.
+This was also my first foray into communicating with a database and handling user accounts. It was really interesting dealing with security for user logins using middleware and data validation for the RESTful API.
 
 ## Skills Gained
 
@@ -30,5 +30,6 @@ This was also my first foray into communicating with a database and handling use
     * MongoDB
     * RESTful routing
     * EJS
+    * Middleware
     * Data validation
     * APIs

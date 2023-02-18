@@ -9,10 +9,6 @@ Recipe Costings is an app that, wait for it… costs recipes! An internal app fo
 - EJS
 - MongoDB
 
-#### Live link
-
-[Recipe Costings](https://recipe-costings.herokuapp.com/)
-
 ## Status
 
 Complete.
